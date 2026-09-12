@@ -1,9 +1,7 @@
 import React from 'react'
 
-const Farmasi = () => {
+export function Farmasi() {
   return (
     <div>Farmasi</div>
   )
 }
-
-export default Farmasi

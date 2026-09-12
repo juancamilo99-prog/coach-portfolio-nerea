@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+:root {
+  /* COLORES */
+  --color-bg: #fdf2e3;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #1e1b2e;
+  --color-text-secondary: #4b4560;
+  --color-text-muted: #6b6480;
+  --color-pink: #ec1e7b;
+  --color-purple: #7c3aed;
+  --color-orange: #f4602a;
+  --color-yellow: #f7cb15;
+  --gradient-cta-primary: linear-gradient(135deg, #ec1e7b, #7c3aed);
+  --gradient-cta-secondary: linear-gradient(135deg, #fb5d74, #f4602a);
+  --color-border: #7c3aed;
+  --color-border-light: #f3e7d8;
+
+  /* TIPOGRAFIA */
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+
+  --fs-hero: clamp(2.5rem, 5vw, 4rem); /* "Transforma tu vida y negocio" */
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-body: 1.125rem;
+  --fs-small: 0.875rem;
+  --fs-stat-number: clamp(2rem, 4vw, 2.75rem); /* 500+, 3, 8 años */
+
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* ESPACIADO */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --container-max: 1200px;
+  --container-padding: 2rem;
+
+  /*  RADIOS DE BORDE  */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px; /* botones, badges tipo "COACH · AUTORA..." */
+  --radius-image: 32px; /* marco de la foto principal */
+
+  /*  SOMBRAS */
+  --shadow-sm: 0 2px 8px rgba(30, 27, 46, 0.06);
+  --shadow-card: 0 8px 24px rgba(30, 27, 46, 0.1); /* tarjeta "Comunidad activa" */
+  --shadow-button: 0 4px 14px rgba(236, 30, 123, 0.35); /* botones con gradiente */
+
+  /* TRANSICIONES  */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
