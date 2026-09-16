@@ -57,3 +57,11 @@
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
 }
+
+.font-display{
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}

@@ -6,9 +6,9 @@ import { Footer } from './Footer'
 export function Layout () {
   return (
     <>
-        <div>
+        <div className="min-h-screen bg-background flex flex-col">
             <NavBar />
-            <main>
+            <main className="flex-1">
                 <Outlet />
             </main>
             <Footer />
