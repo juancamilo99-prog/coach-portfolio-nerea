@@ -58,10 +58,58 @@
   --transition-base: 0.3s ease;
 }
 
-.font-display{
+* {
+  box-sizing: border-box;
+}
+
+.font-display {
   font-family: var(--font-display);
 }
 
 .font-body {
   font-family: var(--font-body);
+}
+
+.text-rose {
+  color: #ff2d78;
+}
+.text-coral {
+  color: #ff6b35;
+}
+.text-sun {
+  color: #ffd60a;
+}
+.text-violet {
+  color: #7c3aed;
+}
+.text-teal {
+  color: #00c9b1;
+}
+.text-ink {
+  color: #1a0a2e;
+}
+.text-cream {
+  color: #fff9f0;
+}
+
+.bg-rose {
+  background-color: #ff2d78;
+}
+.bg-coral {
+  background-color: #ff6b35;
+}
+.bg-sun {
+  background-color: #ffd60a;
+}
+.bg-violet {
+  background-color: #7c3aed;
+}
+.bg-teal {
+  background-color: #00c9b1;
+}
+.bg-ink {
+  background-color: #1a0a2e;
+}
+.bg-cream {
+  background-color: #fff9f0;
 }
