@@ -15,8 +15,8 @@ export function NavBar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="bg-cream w-full py-3 sticky md:border-b border-[#ff2d78]" >
-      <div className="max-w-7xl mx-auto flex items-center justify-center md:justify-between px-4 py-3">
+    <header className="bg-cream w-full py-3 sticky shadow-md" >
+      <div className="max-w-7xl mx-auto flex items-center justify-center md:justify-between px-4 py-3" style={{ backdropFilter: "blur(12px)" }}>
         <button onClick={() => navigate('/')}>
           <span className="font-display font-bold text-3xl leading-none" style={{ color: "#FF2D78"}}>NEREA</span>
         </button>
