@@ -92,6 +92,47 @@
   color: #fff9f0;
 }
 
+/* titulo */
+
+.hero-title-1 {
+  animation: fadeRight 0.8s ease both;
+  animation-delay: 0.25s;
+}
+.hero-title-2 {
+  animation: fadeLeft 0.8s ease both;
+  animation-delay: 0.4s;
+}
+.hero-sub {
+  animation: fadeUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-cta {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.7s;
+}
+.hero-img {
+  animation: fadeLeft 1s ease both;
+  animation-delay: 0.3s;
+}
+.hero-stat {
+  animation: fadeUp 0.6s ease both;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #FF2D78 0%, #FF6B35 40%, #FFD60A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-violet {
+  background: linear-gradient(135deg, #7C3AED 0%, #FF2D78 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .bg-rose {
   background-color: #ff2d78;
 }
