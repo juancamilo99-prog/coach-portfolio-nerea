@@ -2,6 +2,7 @@ import React from 'react'
 
 export function Home() {
   return (
+    <>
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center justify-center w-full py-10">
         {/* cinta de titulo inicio */}
@@ -51,5 +52,17 @@ export function Home() {
           </div>
       </div>
     </section>
+    {/* barra de desplazamiento con detalles */}
+          <div className="py-5 mt-5 overflow-hidden" style={{ background: "#1A0A2E" }}>
+            <div className="marquee-track">
+              {[...Array(3)].map((_, i) =>["✨ Coaching", "🌺 Farmasi", "📚 Libros", "💫 Comunidad", "🎤 Talleres", "💄 Belleza", "🚀 Emprendimiento", "🌸 Bienestar"]
+            .map((t) => (
+              <span key={`${i}-${t}`} className="px-8 font-bold text-lg whitespace-nowrap" style={{ color: "#FFD60A"}}>
+                {t}
+              </span>
+            )))}
+            </div>
+          </div>
+          </>
   )
 }

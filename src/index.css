@@ -154,3 +154,16 @@
 .bg-cream {
   background-color: #fff9f0;
 }
+
+/* marque */
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
