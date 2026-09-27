@@ -167,3 +167,9 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* tarjetas de servicios */
+
+.section-reveal {
+  opacity: 1;
+} 

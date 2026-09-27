@@ -1,4 +1,4 @@
-const SERVICES = [
+export const SERVICES = [
     {
         icon: "✨",
         title: "Coaching Personal",
@@ -20,4 +20,4 @@ const SERVICES = [
         color: "#FF2D78",
         bg: "#FFF0F5",
     }
-]
+];
