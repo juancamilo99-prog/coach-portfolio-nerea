@@ -12,7 +12,7 @@ const navItems = [
 export function Footer () {
   return (
     <>
-      <div className="max-w-7xl mx-auto flex flex-col items-start justify-center py-4 px-4 md:grid md:grid-cols-3
+      <div className="max-w-7xl mx-auto flex flex-col items-start justify-center py-4 px-7 md:grid md:grid-cols-3
       md:justify-items-center">
       {/* mensaje y titulo */}
       <div>
@@ -22,7 +22,7 @@ export function Footer () {
         </span>
       </div>
       { /* Navegacion */}
-      <div>
+      <div className="py-3">
         <h3 className="font-bold" style={{ color: "#FF2D78" }}>NAVEGACIÓN</h3>
         <nav className="flex flex-col gap-2 py-3 font-semibold text-sm">
           {
@@ -44,7 +44,9 @@ export function Footer () {
         <span className="text-sm font-semibold">Valencia, España</span>
       </div>
     </div>
-    <div className="border border-border w-full"></div>
+    <div className="px-7">
+      <div className="border border-border max-w-full"></div>
+    </div>
       <div className="flex flex-col items-center mx-auto py-2">
         <p className="text-sm">
           © 2026 Nerea Sanchez, Todos los derechos reservados.
