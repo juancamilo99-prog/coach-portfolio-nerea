@@ -1,4 +1,5 @@
 import React from 'react'
+import { VideoGallery } from '../components/VideoGallery';
 
 const FAVORITOS_FARMASI = [
   { icon: "💋", label: "Maquillaje", description: "Mi Maquillaje Favorito" },
@@ -25,7 +26,7 @@ export function Farmasi() {
         </div>
         <div className="grid grid-cols-2 gap-4 mb-8">
           {FAVORITOS_FARMASI.map((favoritos => (
-            <div className="flex items-start gap-3 p-4 rounded-2xl" style={{ background: "#FFF0F5" }}>
+            <div key={favoritos.label} className="flex items-start gap-3 p-4 rounded-2xl" style={{ background: "#FFF0F5" }}>
               <span className="text-2xl">{favoritos.icon}</span>
               <div>
                 <div className="font-bold text-sm">{favoritos.label}</div>
@@ -40,6 +41,7 @@ export function Farmasi() {
           <a href="" className="px-8 py-3.5 font-bold border-2 rounded-full border-amber-600 text-amber-600
           transition-all duration-300 hover:scale-105">Ser Distribuidora</a>
         </div>
+        <VideoGallery />
       </div>
     </section>
   )
