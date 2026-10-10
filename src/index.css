@@ -119,6 +119,8 @@
   animation: fadeUp 0.6s ease both;
 }
 
+/* gradientes */
+
 .gradient-text {
   background: linear-gradient(135deg, #FF2D78 0%, #FF6B35 40%, #FFD60A 100%);
   -webkit-background-clip: text;
@@ -131,6 +133,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-button {
+  background: linear-gradient(135deg, #FF6B35, #FF2D78);
+  box-shadow: 0 8px 28px rgba(255, 107, 53, 0.4);
 }
 
 .bg-rose {
