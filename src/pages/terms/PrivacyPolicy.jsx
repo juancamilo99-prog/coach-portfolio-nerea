@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PrivacyPolicy = () => {
+export function PrivacyPolicy () {
   return (
     <div>
         <h1>Politica de privacidad</h1>
@@ -27,5 +27,3 @@ const PrivacyPolicy = () => {
     </div>
   )
 }
-
-export default PrivacyPolicy

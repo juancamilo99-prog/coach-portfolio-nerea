@@ -6,6 +6,8 @@ import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Farmasi } from './pages/Farmasi';
 import { Contact } from './pages/Contact';
+import { TermsOfService } from './pages/terms/TermsOfService';
+import { PrivacyPolicy } from './pages/terms/PrivacyPolicy';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
             <Route path="/projects" element={<Projects />}></Route>
             <Route path="/farmasi" element={<Farmasi />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/terms" element={<TermsOfService />}></Route>
+            <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         </Route>
     </Routes>
   )

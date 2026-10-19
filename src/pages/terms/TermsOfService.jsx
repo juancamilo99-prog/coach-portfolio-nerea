@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
 
-const TermsOfService = () => {
+export function TermsOfService () {
 
   return (
     <div>
@@ -33,5 +32,3 @@ const TermsOfService = () => {
     </div>
   )
 }
-
-export default TermsOfService
