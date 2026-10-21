@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from 'express';
 import authTiktok from "./src/routes/auth.routes.js"
+import syncTiktok from "./src/routes/sync.routes.js"
 //const serverOn = require("./src/api/tiktokService");
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,7 @@ app.use(express.json());
 
 //ruta authenticacion
 app.use("/auth/tiktok/", authTiktok /* aqui tendria que poner la ruta.routes.js */)
+app.use("/api/sync/", syncTiktok)
 
 
 //manejador de errores

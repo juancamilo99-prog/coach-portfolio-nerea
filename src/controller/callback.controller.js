@@ -45,7 +45,7 @@ export const getTiktokCallback = async(req,res) =>{
     const tokenData = await response.json();
     if(!response.ok || tokenData.error){
         console.log(tokenData);
-        return res.status(500).json({error: "Erro al obtener la respuesta."})
+        return res.status(500).json({error: "Error al obtener la respuesta."})
     }
 
     const { error: errorCall} = await supabaseAdmin.from('tiktok_tokens').upsert({
