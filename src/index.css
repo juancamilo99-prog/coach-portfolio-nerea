@@ -181,4 +181,11 @@
   opacity: 1;
 } 
 
-/* tarjetas libros */
+
+/* carrousel videos */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
+}

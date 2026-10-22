@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase  } from '../utils/supabase';
+import { Timer, Play, ThumbsUp, MessageCircle, ChevronRight, ChevronLeft } from 'lucide-react';
 
 export const VideoGallery = () => {
 
     const [videos, setVideos] = useState([]);
     const [categoria, setCategoria] = useState('Todos los videos');
     const [loading, setLoading] = useState(true);
+    const carouselRef = useRef(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
 
     const CATEGORIES = [
-        'Todos los videos',
-        'Farmasi'
+        'Todos los videos'
     ];
 
     useEffect(() => {
@@ -40,10 +43,23 @@ export const VideoGallery = () => {
         return num.toString();
     }
 
-    const filteredVideos = videos.filter((video) => 
-        video.title?.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        video.tag?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredVideos = videos;
+
+    const scroll = (direccion) => {
+        const cantidad = direccion === 'left' ? -300 : 300;
+        carouselRef.current.scrollBy({ left: cantidad, behavior: 'smooth'});
+    }
+
+    const checkScroll = () => {
+        if(!carouselRef.current) return;
+        const {scrollLeft, clientWidth, scrollWidth} = carouselRef.current;
+        setCanScrollLeft(scrollLeft > 0);
+        setCanScrollRight(scrollLeft + clientWidth < scrollWidth -1);
+    }
+
+    useEffect(() => {
+        checkScroll();
+    }, [videos]);
 
   return (
     <div className="mt-10">
@@ -60,41 +76,40 @@ export const VideoGallery = () => {
                 ))}
             </div>
             {/* grid videos */}
-            <div>
+            <div className="px-3 py-5">
                 {loading ? (
                     <div>Cargando catalogo...</div>
                 ): filteredVideos.length === 0 ? (
                     <div> No se encontraron videos </div>
                 ) : (
                     <div>
+                        <div ref={carouselRef} onScroll={checkScroll} className="no-scrollbar flex overflow-x-auto gap-10 snap-x snap-mandatoryp">
                         {filteredVideos.map((video) => (
-                            <a href="video.tiktok.url"
+                            <a href={video.tiktok_url}
                             key={video.id}
                             target="_blank"
-                            rel="noopener noreferrer">
-                                <img src={video.cover_url} alt={video.title} />
-                                <div></div>
+                            rel="noopener noreferrer"
+                            className="relative shrink-0 w-60 snap-start">
+                                <img src={video.cover_url} alt={video.title} className="aspect-9/16 w-full object-cover"/>
+                                <div className="absolute inset-0 bg-linear-to-t from-black to-transparent"></div>
                                 {/* header de la tarjeta */}
-                                <div>
-                                    <span>{video.tag}</span>
-                                    <span>⏱ {video.duration}</span>
-                                </div>
+                                <div className="font-display absolute bottom-0 w-full p-3 text-white/80 text-sm font-bold flex gap-5">
+                                    <span className="flex gap-1"><Timer size={14}/> {video.duration}</span>
                                 {/* cuerpo y metricas */}
-                                <div>
-                                    <div>▶ {formatNumber(video.views_count)}</div>
-                                    <h3>{video.title}</h3>
-                                    <p>{video.subtitle}</p>
+                                    <span className="flex gap-1"><Play size={14}/>{formatNumber(video.views_count)}</span>
                                     {/* footer de la tarjeta */}
-                                    <div>
-                                        <div>
-                                            <span>{formatNumber(video.likes_count)}</span>
-                                            <span>{formatNumber(video.comments_count)}</span>
-                                        </div>
-                                        <span>↪</span>
-                                    </div>
+                                    <span className="flex gap-1"><ThumbsUp size={14}/>{formatNumber(video.likes_count)}</span>
+                                    <span className="flex gap-1"><MessageCircle size={14}/>{formatNumber(video.comments_count)}</span>
                                 </div>
                             </a>
                         ))}
+                    </div>
+                    <div className="flex gap-3 mt-4">
+                        <button className="border-2 py-2 px-2 rounded-full cursor-pointer transition-all hover:opacity-40 disabled:opacity-30 disabled:cursor-not-allowed"
+                        disabled={!canScrollLeft} onClick={() => scroll('left')}><ChevronLeft/></button>
+                        <button className="border-2 py-2 px-2 rounded-full cursor-pointer transition-all hover:opacity-40 disabled:opacity-30 disabled:cursor-not-allowed"
+                        disabled={!canScrollRight} onClick={() => scroll('right')}><ChevronRight/></button>
+                    </div>
                     </div>
                 )}
             </div>
