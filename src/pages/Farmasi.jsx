@@ -1,5 +1,6 @@
 import React from 'react'
 import { VideoGallery } from '../components/VideoGallery';
+import NewsLetter from '../components/NewsLetter';
 
 const FAVORITOS_FARMASI = [
   { icon: "💋", label: "Maquillaje", description: "Mi Maquillaje Favorito" },
@@ -42,6 +43,7 @@ export function Farmasi() {
           transition-all duration-300 hover:scale-105">Ser Distribuidora</a>
         </div>
         <VideoGallery />
+        <NewsLetter />
       </div>
     </section>
   )

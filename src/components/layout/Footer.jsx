@@ -12,7 +12,7 @@ const navItems = [
 export function Footer () {
   return (
     <>
-      <div className="max-w-7xl mx-auto flex flex-col items-start justify-center py-4 px-7 md:grid md:grid-cols-3
+      <div className="max-w-7xl mx-auto flex flex-col items-start justify-center py-15 px-7 md:grid md:grid-cols-3
       md:justify-items-center">
       {/* mensaje y titulo */}
       <div>
