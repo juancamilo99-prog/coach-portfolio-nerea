@@ -1,13 +1,18 @@
 import "dotenv/config";
+import cors from 'cors';
 import express from 'express';
 import authTiktok from "./src/routes/auth.routes.js"
 import syncTiktok from "./src/routes/sync.routes.js"
 import newsletter from "./src/routes/newsletter.routes.js"
 //const serverOn = require("./src/api/tiktokService");
+const frontedUrl = process.env.FRONTEND_URL;
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors({
+    origin: ['http://localhost:5173', frontedUrl]
+}));
 
 //ruta authenticacion
 app.use("/auth/tiktok/", authTiktok /* aqui tendria que poner la ruta.routes.js */)
