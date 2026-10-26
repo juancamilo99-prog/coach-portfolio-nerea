@@ -1,11 +1,11 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useToast } from "./context/ToastContext";
 
 const urlBackendVite = import.meta.env.VITE_BACKEND_URL;
 
 const NewsLetter = () => {
   const { register, handleSubmit, reset, formState: { errors},} = useForm({ defaultValues: { email: "", consent: false}});
-  const [ status, setStatus ] = useState(null);
+  const { showToast } = useToast();
 
     const onSubmit = async(data) => {
         try{
@@ -18,21 +18,18 @@ const NewsLetter = () => {
 
         const respuestaSubmit = await response.json();
         if(!response.ok){
-            return setStatus({
-                type: 'error',
-                text: respuestaSubmit.error
-            });
+            return showToast(
+              respuestaSubmit.error, 'error'
+            );
         }
         reset();
-        return setStatus({
-            type: 'success',
-            text: respuestaSubmit.message
-        });
+        return showToast(
+          respuestaSubmit.message, 'success'
+        );
         }catch(error){
-            return setStatus({
-            type: 'error',
-            text: 'No se pudo conectar, intentalo mas tarde.'
-        });
+            return showToast(
+              'No se pudo conectar, inténtalo más tarde.', 'error'
+            );
         }
     }
 
@@ -82,16 +79,11 @@ const NewsLetter = () => {
               <input id="consent" type="checkbox" className="border"
               aria-invalid={errors.consent ? "true" : "false"}
               {...register("consent", { required: "Debes aceptar y leer el consentimiento."})} />
-              <label htmlFor="consent" className="text-white">*Aceptar la <a href="/privacy" target="_blank" >política de privacidad</a></label>
+              <label htmlFor="consent" className="text-white">*Aceptar la <a href="/privacy" rel="noopener noreferrer" target="_blank" >política de privacidad</a></label>
             </div>
             {errors.consent && <p role="alert" className="text-red-500 text-center">{errors.consent.message}</p>}
             {errors.email && <p role="alert" className="text-red-500 text-center">{errors.email.message}</p>}
           </form>
-          {status && (
-            <p role="alert" className={status.type === 'success' ? `text-green-500` : `text-red-500`}>
-                {status.text}
-            </p>
-          )};
         </div>
       </div>
     </div>
