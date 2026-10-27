@@ -8,12 +8,15 @@ import { Farmasi } from './pages/Farmasi';
 import { Contact } from './pages/Contact';
 import { TermsOfService } from './pages/terms/TermsOfService';
 import { PrivacyPolicy } from './pages/terms/PrivacyPolicy';
+import { NewsletterStatus } from './components/NewsletterStatus';
 
 
 function App() {
 
   return (
-    <Routes>
+    <>
+    <NewsletterStatus />
+      <Routes>
         <Route element={<Layout />}>
           {/* Definimos las rutas de nuestra web las cuales dispondremos en el navbar */}
             <Route path="/" element={<Home />}></Route>
@@ -25,6 +28,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         </Route>
     </Routes>
+    </>
   )
 }
 
