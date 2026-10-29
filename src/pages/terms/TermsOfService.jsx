@@ -1,34 +1,48 @@
+import LegalPages from "../../components/LegalPages";
+
+const EMAIL = 'nereguisadosanchez@gmail.com';
+const sections = [
+    {
+        title: 'Titular de la Web',
+        content: `Nerea Guisado Sanchez - ${EMAIL}`
+    },
+    {
+        title: 'Uso de la web',
+        content: `Esta web es un portafolio personal con fines informativos, Su uso es gratuito y no requiere registro`
+    },
+    {
+        title: 'Contenido de terceros',
+        content: `Parte del contenido procede de TikTok y se muestra mediante sus herramientas oficiales. 
+            Su uso también se rige por los términos de servicio de TikTok. Esta web no está afiliada a TikTok ni patrocinada por TikTok.`
+    },
+    {
+        title: 'Propiedad intelectual',
+        content: `Los textos, imágenes y vídeos son de Nerea Guisado Sanchez o de sus respectivos titulares. No se permite reproducirlos sin permiso.`
+    },
+    {
+        title: 'Marcas',
+        content: `Las marcas mencionadas pertenecen a sus respectivos titulares.`
+    },
+    {
+        title: 'Responsabilidad',
+        content: `No nos hacemos responsables de interrupciones del servicio ni del contenido de webs externas enlazadas.`
+    },
+    {
+        title: 'Cambios',
+        content: `Estos términos pueden actualizarse. La fecha de arriba indica la última versión.`
+    },
+    {
+        title: 'Ley aplicable',
+        content: `Legislación española.`
+    }
+];
+
 
 export function TermsOfService () {
 
   return (
-    <div>
-        <h1>Política de privacidad</h1>
-        <span>Ultima actualización 2026</span>
-        <div>
-            <span>Titular de la Web:</span>
-            <span>Nerea Guisado Sanches : neregsanchez@gmail.com</span>
-        </div>
-        <span>Uso de la web: Esta web es un portafolio personal con fines informativos, Su uso es gratuito y no requiere registro</span>
-        <span> 
-            Contenido de terceros: Parte del contenido procede de TikTok y se muestra mediante sus herramientas oficiales. 
-            Su uso también se rige por los términos de servicio de TikTok. Esta web no está afiliada a TikTok ni patrocinada por TikTok.
-        </span>
-        <span>
-            Propiedad intelectual: Los textos, imágenes y vídeos son de Nerea Guisado Sanchez o de sus respectivos titulares. No se permite reproducirlos sin permiso.
-        </span>
-        <span>
-            Marcas: Las marcas mencionadas pertenecen a sus respectivos titulares.
-        </span>
-        <span>
-            Responsabilidad: No nos hacemos responsables de interrupciones del servicio ni del contenido de webs externas enlazadas.
-        </span>
-        <span>
-            Cambios: Estos términos pueden actualizarse. La fecha de arriba indica la última versión.
-        </span>
-        <span>
-            Ley aplicable: Legislación española.
-        </span>
-    </div>
+    <LegalPages title="Terminos y condiciones"
+    lastUpdate="29 de octubre de 2026" 
+    sections={sections}/>
   )
 }

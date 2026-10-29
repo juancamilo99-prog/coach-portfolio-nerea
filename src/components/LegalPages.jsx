@@ -10,7 +10,7 @@ const LegalPages = ({ title, lastUpdate, sections }) => {
                 <h2>{section.title}</h2>
                 <p>{section.content}</p>
             </div>
-        ))};
+        ))}
         </div>
     </div>
   )

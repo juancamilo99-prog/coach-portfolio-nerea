@@ -5,7 +5,7 @@ const EMAIL = 'nereguisadosanchez@gmail.com';
 const sections = [
   {
     title: 'Responsable',
-    content: `Nerea Guisado Sanchez. Contacto: ${EMAIL}`
+    content: `Nerea Guisado Sánchez. Contacto: ${EMAIL}`
   },
   {
     title: 'Datos de la cuenta de TikTok',
