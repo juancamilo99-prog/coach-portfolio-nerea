@@ -18,3 +18,28 @@ export const sendConfirmationEmail = async (email, token) => {
 
     return errorConfirmationEmail;
 }
+
+export const sendNewsletterEmails = async (subscribers, subject, html) => {
+    const emails = subscribers.map((subscriber) => {
+
+        const tokenSusbcriptor = subscriber.token;
+        const unsubscribeUrl = `${backendUrl}/api/newsletter/unsubscribe?token=${tokenSusbcriptor}`;
+
+        return {
+            from: 'onboarding@resend.dev',
+            to: subscriber.email,
+            subject: subject,
+            html: `
+            ${html}
+            <hr />
+            <p style="font-size: 12px; color: #888;">
+                ¿No quieres recibir más correos? <a href="${unsubscribeUrl}">Date de baja aquí.</a>
+            </p>
+            `
+        };
+    });
+
+    const { data: dataSendNewsletter, error: errorDataSendNewsletter } = await resend.batch.send(emails);
+
+    return errorDataSendNewsletter;
+}

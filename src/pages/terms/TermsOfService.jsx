@@ -4,11 +4,11 @@ const EMAIL = 'nereguisadosanchez@gmail.com';
 const sections = [
     {
         title: 'Titular de la Web',
-        content: `Nerea Guisado Sanchez - ${EMAIL}`
+        content: `Nerea Guisado Sánchez - ${EMAIL}`
     },
     {
         title: 'Uso de la web',
-        content: `Esta web es un portafolio personal con fines informativos, Su uso es gratuito y no requiere registro`
+        content: `Esta web es un portafolio personal con fines informativos, su uso es gratuito y no requiere registro`
     },
     {
         title: 'Contenido de terceros',

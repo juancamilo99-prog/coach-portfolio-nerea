@@ -1,8 +1,9 @@
 import crypto from "node:crypto";
-import { sendConfirmationEmail } from "../api/emailService.js";
+import { sendConfirmationEmail, sendNewsletterEmails } from "../api/emailService.js";
 import { supabaseAdmin } from "../api/supabaseAdmin.js";
 
 const frontedUrl = process.env.FRONTEND_URL;
+const adminKey = process.env.ADMIN_KEY;
 
 export const subscribeEmail = async (req, res) => {
   try {
@@ -23,11 +24,9 @@ export const subscribeEmail = async (req, res) => {
 
     //si no ha dado su consentimiento
     if (consent !== true) {
-      return res
-        .status(400)
-        .json({
-          error: "Debes aceptar la politica de privacidad para suscribirte.",
-        });
+      return res.status(400).json({
+        error: "Debes aceptar la politica de privacidad para suscribirte.",
+      });
     }
 
     const { data: subscriber, error: errorSubscriber } = await supabaseAdmin
@@ -71,7 +70,12 @@ export const subscribeEmail = async (req, res) => {
       const newToken = crypto.randomUUID();
       const { error: errorEstado } = await supabaseAdmin
         .from("suscriptores")
-        .update({ estado: "pendiente", fecha_baja: null, token: newToken, fecha_alta: new Date().toISOString() })
+        .update({
+          estado: "pendiente",
+          fecha_baja: null,
+          token: newToken,
+          fecha_alta: new Date().toISOString(),
+        })
         .eq("email", cleanEmail);
       if (errorEstado) {
         return res.status(500).json({ error: "Error al actualizar el estado" });
@@ -166,5 +170,43 @@ export const unsubscribe = async (req, res) => {
     return res.redirect(`${frontedUrl}/?newsletter=baja`);
   } catch (error) {
     return res.redirect(`${frontedUrl}/?newsletter=error`);
+  }
+};
+
+export const sendNewsletter = async (req, res) => {
+  const { key, subject, html } = req.body;
+
+  try {
+    if (!key || key !== adminKey) {
+      return res.status(403).json({ error: "Clave inexistente o invalida." });
+    }
+
+    if (!subject || !html) {
+      return res
+        .status(400)
+        .json({ error: "El asunto y el contenido no peuden estar vacios" });
+    }
+
+    const { data: subscribers, error: errorSusbscribers } = await supabaseAdmin.from('suscriptores').select('token, email').eq('estado', 'confirmado');
+
+    if(errorSusbscribers){
+      return res.status(500).json({ error: "Error al obtener la consulta en la base de datos."})
+    }
+
+    if(subscribers.length === 0){
+      return res.status(200).json({ message: "No hay personas suscriptas en estos momentos.", count: 0});
+    }
+
+    const errorSendNewsLetter = await sendNewsletterEmails( subscribers, subject, html);
+
+    if(errorSendNewsLetter){
+      return res
+          .status(500)
+          .json({ error: "Error al realizar los envios." });
+    }
+    return res.status(200).json({ message: "Newsletter enviada", count: subscribers.length});
+
+  } catch (error) {
+    return res.status(500).json({ error: "Error al enviar el correo."})
   }
 };
