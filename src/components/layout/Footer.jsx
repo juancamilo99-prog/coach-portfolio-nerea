@@ -7,6 +7,8 @@ const navItems = [
   { to: "/projects", label: "Proyectos" },
   { to: "/farmasi", label: "Farmasi" },
   { to: "/contact", label: "Contacto" },
+  { to: "/terms", label: "Terminos y condiciones"},
+  { to: "/privacy", label: "Política de privacidad"}
 ];
 
 export function Footer () {
