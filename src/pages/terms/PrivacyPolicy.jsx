@@ -9,7 +9,7 @@ const sections = [
   },
   {
     title: 'Datos de la cuenta de TikTok',
-    content: 'con autorización expresa de la titular, esta web obtiene de su cuenta de TikTok su nombre visible y foto de perfil; datos públicos de sus vídeos y credenciales técnicas de acceso, que se guardan en el servidor y nunca se muestran ni se comparten'
+    content: 'Con autorización expresa de la titular, esta web obtiene de su cuenta de TikTok su nombre visible y foto de perfil; datos públicos de sus vídeos y credenciales técnicas de acceso, que se guardan en el servidor y nunca se muestran ni se comparten'
   },
   {
     title: 'Finalidad del contenido de TikTok',
