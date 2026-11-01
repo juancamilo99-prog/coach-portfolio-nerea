@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
-import { sendConfirmationEmail, sendNewsletterEmails } from "../api/emailService.js";
-import { supabaseAdmin } from "../api/supabaseAdmin.js";
+import { sendConfirmationEmail, sendNewsletterEmails } from "../../server/api/emailService.js";
+import { supabaseAdmin } from "../../server/api/supabaseAdmin.js";
 
 const frontedUrl = process.env.FRONTEND_URL;
 const adminKey = process.env.ADMIN_KEY;

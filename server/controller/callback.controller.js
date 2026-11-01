@@ -1,5 +1,5 @@
 
-import { supabaseAdmin } from '../api/supabaseAdmin.js';  
+import { supabaseAdmin } from '../../server/api/supabaseAdmin.js';  
 
 const tiktokClientKey = process.env.TIKTOK_CLIENT_KEY;
 const tiktokRedirectUri = process.env.TIKTOK_REDIRECT_URI;

@@ -1,9 +1,9 @@
 import "dotenv/config";
 import cors from 'cors';
 import express from 'express';
-import authTiktok from "./src/routes/auth.routes.js"
-import syncTiktok from "./src/routes/sync.routes.js"
-import newsletter from "./src/routes/newsletter.routes.js"
+import authTiktok from "./routes/auth.routes.js"
+import syncTiktok from "./routes/sync.routes.js"
+import newsletter from "./routes/newsletter.routes.js"
 //const serverOn = require("./src/api/tiktokService");
 const frontedUrl = process.env.FRONTEND_URL;
 const app = express();
