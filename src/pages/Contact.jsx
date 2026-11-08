@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 
 const DATOS = [
   {icon: "📧", title: "Email", content: "nereguisadosanchez@gmail.com", color: "#FF2D78"},
@@ -6,8 +7,13 @@ const DATOS = [
   
 ]
 
-
 export function Contact () {
+
+  const { register, handleSubmit, reset, formState: { errors},} = useForm({ defaultValues: { email: "", consent: false, name: "", message: ""}});
+  const onSubmit = (data) => {
+    console.log(data);
+  }
+
   return (
     <section className="px-6 py-24">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
@@ -41,27 +47,49 @@ export function Contact () {
         </div>
         {/* seccion formulario */}
         <div className="section-reveal">
-            <form action="" className="rounded-3xl p-8 md:p-10 space-y-5"
+            <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl p-8 md:p-10 space-y-5"
             style={{ background: "#fff", boxShadow: "0 24px 80px rgba(255,45,120,0.08)", border: "1px solid rgba(255,45,120,0.1)" }}>
               <div className="flex flex-col gap-5">
-                <label htmlFor="" className="block text-sm font-bold mb-2">Tu nombre</label>
-                <input type="text" placeholder="Escribe tu nombre"
+
+                <label htmlFor="name" className="block text-sm font-bold mb-2">Tu nombre</label>
+                <input type="text" id="name" placeholder="Escribe tu nombre"
                 className="w-full px-5 py-3.5 rounded-2xl font-medium transition-all duration-200"
-                style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} />
-                <label htmlFor="" className="block text-sm font-bold mb-2">Correo electronico</label>
-                <input type="email" placeholder="tucorreo@correo.com" 
+                style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} 
+                aria-invalid={errors.name ? "true" : "false"}
+                {...register("name", { required: "Por favor, escribe tu nombre."})}/>
+                {errors.name && <p role="alert" className="text-red-500 text-sm">{errors.name.message}</p>}
+
+                <label htmlFor="email" className="block text-sm font-bold mb-2">Correo electronico</label>
+                <input type="email" id="email" placeholder="tucorreo@correo.com" 
                 className="w-full px-5 py-3.5 rounded-2xl font-medium transition-all duration-200"
-                 style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} />
-                <label htmlFor="" className="block text-sm font-bold mb-2">Mensaje</label>
-                <textarea name="" id="" placeholder="Cuéntame sobre ti y cómo puedo ayudarte..."
+                 style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} 
+                 aria-invalid={errors.email ? "true" : "false"}
+                 {...register("email", { required: "Por favor, escribe tu email."})}/>
+                 {errors.email && <p role="alert" className="text-red-500 text-sm">{errors.email.message}</p>}
+
+                <label htmlFor="message" className="block text-sm font-bold mb-2">Mensaje</label>
+                <textarea id="message" placeholder="Cuéntame sobre ti y cómo puedo ayudarte..."
                 className="w-full px-5 py-3.5 rounded-2xl font-medium transition-all duration-200 resize-none"
-                style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }}></textarea>
+                style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }}
+                aria-invalid={errors.message ? "true" : "false"}
+                {...register("message", { required: "Por favor, escribe un mensaje.",
+                  minLength: { value: 10, message: "Cuentame un poco más... (mínimo 10 caracteres)"},
+                  maxLength: { value: 1000, message: "El mensaje es demasiado largo (máximo 1000 caracteres)"}
+                })}></textarea>
+                {errors.message && <p role="alert" className="text-red-500 text-sm">{errors.message.message}</p>}
+              </div>
+              <div className="flex gap-4 items-center justify-center py-3">
+              <input id="consent" type="checkbox" className="border"
+              aria-invalid={errors.consent ? "true" : "false"}
+              {...register("consent", { required: "Debes aceptar y leer el consentimiento."})} />
+              <label htmlFor="consent">*He leído y acepto la <a href="/privacy" rel="noopener noreferrer" target="_blank" >política de privacidad</a></label>
               </div>
               <button className="w-full py-4 rounded-2xl font-black text-white text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-98"
               style={{ background: "linear-gradient(135deg, #FF2D78 0%, #7C3AED 100%)", boxShadow: "0 8px 32px rgba(255,45,120,0.35)" }}>
                 Enviar mensaje
               </button>
             </form>
+            {errors.consent && <p role="alert" className="text-red-500 text-center">{errors.consent.message}</p>}
         </div>
       </div>
     </section>
