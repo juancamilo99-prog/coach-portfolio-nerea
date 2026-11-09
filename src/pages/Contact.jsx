@@ -56,7 +56,7 @@ export function Contact () {
                 className="w-full px-5 py-3.5 rounded-2xl font-medium transition-all duration-200"
                 style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} 
                 aria-invalid={errors.name ? "true" : "false"}
-                {...register("name", { required: "Por favor, escribe tu nombre."})}/>
+                {...register("name", { required: "Por favor, escribe tu nombre."})} required/>
                 {errors.name && <p role="alert" className="text-red-500 text-sm">{errors.name.message}</p>}
 
                 <label htmlFor="email" className="block text-sm font-bold mb-2">Correo electronico</label>
@@ -64,7 +64,7 @@ export function Contact () {
                 className="w-full px-5 py-3.5 rounded-2xl font-medium transition-all duration-200"
                  style={{ background: "#F8F5FF", border: "2px solid #EDE8FF" }} 
                  aria-invalid={errors.email ? "true" : "false"}
-                 {...register("email", { required: "Por favor, escribe tu email."})}/>
+                 {...register("email", { required: "Por favor, escribe tu email."})} required/>
                  {errors.email && <p role="alert" className="text-red-500 text-sm">{errors.email.message}</p>}
 
                 <label htmlFor="message" className="block text-sm font-bold mb-2">Mensaje</label>
@@ -75,13 +75,13 @@ export function Contact () {
                 {...register("message", { required: "Por favor, escribe un mensaje.",
                   minLength: { value: 10, message: "Cuentame un poco más... (mínimo 10 caracteres)"},
                   maxLength: { value: 1000, message: "El mensaje es demasiado largo (máximo 1000 caracteres)"}
-                })}></textarea>
+                })} required></textarea>
                 {errors.message && <p role="alert" className="text-red-500 text-sm">{errors.message.message}</p>}
               </div>
               <div className="flex gap-4 items-center justify-center py-3">
               <input id="consent" type="checkbox" className="border"
               aria-invalid={errors.consent ? "true" : "false"}
-              {...register("consent", { required: "Debes aceptar y leer el consentimiento."})} />
+              {...register("consent", { required: "Debes aceptar y leer el consentimiento."})} required/>
               <label htmlFor="consent">*He leído y acepto la <a href="/privacy" rel="noopener noreferrer" target="_blank" >política de privacidad</a></label>
               </div>
               <button className="w-full py-4 rounded-2xl font-black text-white text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-98"
